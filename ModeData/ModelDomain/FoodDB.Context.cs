@@ -29,5 +29,7 @@ namespace ModeData.ModelDomain
         public virtual DbSet<SaleFoodOnline> SaleFoodOnline { get; set; }
         public virtual DbSet<SaleFoodOnlineDetaile> SaleFoodOnlineDetaile { get; set; }
         public virtual DbSet<SettingServerOnline> SettingServerOnline { get; set; }
+        public virtual DbSet<tblLogin> tblLogin { get; set; }
+        public virtual DbSet<tblPrinterUserSetting> tblPrinterUserSetting { get; set; }
     }
 }

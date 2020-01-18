@@ -29,6 +29,15 @@ internal class RepoSaleFood
 
     internal SettingServerOnline ServerSetting()
     {
-        return db.SettingServerOnline.FirstOrDefault();
+        return db.SettingServerOnline.Where(c => c.Enable==true).FirstOrDefault();
     }
+
+    internal tblPrinterUserSetting GetSettingPrinter()
+    {
+        tblLogin login = db.tblLogin.Where(c => c.Login_IsAdmin == true && c.Login_Active == true).SingleOrDefault();
+        if (login == null) return null;
+        return db.tblPrinterUserSetting.Where(c => c.UserID == login.Login_ID).SingleOrDefault();
+
+    }
+
 }

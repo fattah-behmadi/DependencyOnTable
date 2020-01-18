@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ModeData</RootNamespace>
     <AssemblyName>ModeData</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -95,6 +96,12 @@
       <DependentUpon>FoodDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelDomain\SettingServerOnline.cs">
+      <DependentUpon>FoodDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDomain\tblLogin.cs">
+      <DependentUpon>FoodDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDomain\tblPrinterUserSetting.cs">
       <DependentUpon>FoodDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

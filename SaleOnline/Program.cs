@@ -30,21 +30,47 @@ namespace SaleOnline
             CultureInfo cul = new CultureInfo("fa-IR");
             clt.SetDefaultCulture(cul);
 
-            Application.ThreadException +=new ThreadExceptionEventHandler(ThreadException);
+            Application.ThreadException += new ThreadExceptionEventHandler(ThreadException);
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmOnlineSale());
         }
 
+        static void CurrentDomain_UnhandledException(object sender,UnhandledExceptionEventArgs e)
+        {
+            Exception ex= (Exception)e.ExceptionObject;
+            string error = "";
+            if (ex.InnerException != null)
+                error = ex.InnerException.Message;
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\ErrorLog.log", true, System.Text.Encoding.UTF8))
+            {
+                file.WriteLine("===================================");
+               
+                file.WriteLine(Utilities.JulianDateToFarsi(DateTime.Now));
+
+                file.WriteLine(ex.Message);
+                if(!string.IsNullOrEmpty(error))
+                file.WriteLine(error);
+                file.WriteLine("===================================");
+
+            }
+        }
+        
         static void ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             Exception ex = e.Exception;
-            using (System.IO.StreamWriter file =
-           new System.IO.StreamWriter(@".\ErrorLog.log"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\ErrorLog.log", true, System.Text.Encoding.UTF8))
             {
+                file.WriteLine("===================================");
                 file.WriteLine(ex.Message);
+                file.WriteLine("===================================");
+
             }
-            MessageBox.Show(ex.Message);
+
         }
         public class clt
         {

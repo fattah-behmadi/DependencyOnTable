@@ -48,6 +48,7 @@
             this.lblCountNew = new DevExpress.XtraBars.BarHeaderItem();
             this.lblCountCanceled = new DevExpress.XtraBars.BarHeaderItem();
             this.lblCountEdit = new DevExpress.XtraBars.BarHeaderItem();
+            this.lblVersion = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -77,6 +78,7 @@
             this.colStateDelivery = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -108,9 +110,10 @@
             this.barEditItem3,
             this.lblCountNew,
             this.lblCountCanceled,
-            this.lblCountEdit});
+            this.lblCountEdit,
+            this.lblVersion});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 15;
+            this.ribbonControl1.MaxItemId = 16;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -168,6 +171,7 @@
             this.btnAllPrint.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAllPrint.Glyph")));
             this.btnAllPrint.Id = 5;
             this.btnAllPrint.Name = "btnAllPrint";
+            this.btnAllPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAllPrint_ItemClick);
             // 
             // btnShowSaleDetaile
             // 
@@ -243,6 +247,13 @@
             this.lblCountEdit.Id = 14;
             this.lblCountEdit.Name = "lblCountEdit";
             // 
+            // lblVersion
+            // 
+            this.lblVersion.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.lblVersion.Caption = "نسخه برنامه";
+            this.lblVersion.Id = 15;
+            this.lblVersion.Name = "lblVersion";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -278,6 +289,7 @@
             this.ribbonStatusBar1.ItemLinks.Add(this.lblCountNew);
             this.ribbonStatusBar1.ItemLinks.Add(this.lblCountEdit);
             this.ribbonStatusBar1.ItemLinks.Add(this.lblCountCanceled);
+            this.ribbonStatusBar1.ItemLinks.Add(this.lblVersion);
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 462);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
@@ -670,6 +682,12 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // frmOnlineSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,14 +696,15 @@
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmOnlineSale";
             this.Ribbon = this.ribbonControl1;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar1;
             this.Text = "فروش انلاین";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOnlineSale_FormClosing);
+            this.Load += new System.EventHandler(this.frmOnlineSale_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
@@ -751,5 +770,7 @@
         private DevExpress.XtraBars.BarHeaderItem lblCountNew;
         private DevExpress.XtraBars.BarHeaderItem lblCountCanceled;
         private DevExpress.XtraBars.BarHeaderItem lblCountEdit;
+        private DevExpress.XtraBars.BarButtonItem lblVersion;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

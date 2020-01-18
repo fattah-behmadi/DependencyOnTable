@@ -3,32 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Globalization;
 using System.Data.SqlClient;
 public class ConnectionDB
 {
-    public static string _conectionString = "data source=.;initial catalog=SanResturant;integrated security=True;User ID=OnlineUser;Password=123456;";
-    SqlConnection con = new SqlConnection();
+    public static string _conectionString = "data source=.\\sqlexpress;initial catalog=SanResturant;integrated security=True;User ID=OnlineUser;Password=123456;";
     public ConnectionDB()
     {
-        con.ConnectionString = _conectionString;
+
     }
     public ConnectionDB(string connectionStr)
     {
-        con.ConnectionString = connectionStr;
-    }
-    public static void GetData()
-    {
 
     }
-
 
 
 }
 
-public static class  Utilities
+public static class Utilities
 {
 
+    public static string JulianDateToFarsi(DateTime date)
+    {
+        PersianCalendar pc = new PersianCalendar();
+        var day = pc.GetDayOfMonth(date).ToString().PadLeft(2, '0');
+        var month = pc.GetMonth(date).ToString().PadLeft(2, '0');
+        var year = pc.GetYear(date).ToString();
+        return string.Format($"{year} - {month} - {date} - {DateTime.Now.ToShortTimeString()    }");
+    }
     public static int ToInt(this object obj)
     {
         if (obj == null) return 0;

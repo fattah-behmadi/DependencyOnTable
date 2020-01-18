@@ -25,12 +25,18 @@ public class ServicesSaleFood
         return repo.UpdateSaleFoodOnline(salefood);
     }
 
- static   SettingServerOnline serverSetting;
+    static SettingServerOnline serverSetting;
     public static SettingServerOnline GetSettingServer()
     {
-        if(serverSetting==null)
-            serverSetting= repo.ServerSetting();
+        if (serverSetting == null)
+            serverSetting = repo.ServerSetting();
         return serverSetting;
     }
+
+    public static tblPrinterUserSetting GetSettingPrinter()
+    {
+        return repo.GetSettingPrinter();
+    }
+
 
 }

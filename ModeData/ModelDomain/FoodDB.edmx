@@ -56,6 +56,50 @@
           <Property Name="Motto" Type="nvarchar" MaxLength="500" />
           <Property Name="Enable" Type="bit" />
         </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login_UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login_Password" Type="nvarchar" MaxLength="500" />
+          <Property Name="Login_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login_Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Login_Pic" Type="image" />
+          <Property Name="Login_RoleID" Type="int" />
+          <Property Name="Login_Active" Type="bit" />
+          <Property Name="Login_SetUser" Type="bit" />
+          <Property Name="Login_Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login_IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblPrinterUserSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="PrinterCustomer" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrinterSandogh" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrinterAshpazkhane" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrinterPeyk" Type="nvarchar" MaxLength="50" />
+          <Property Name="BironbarMoshtari" Type="bit" />
+          <Property Name="BironbarSandogh" Type="bit" />
+          <Property Name="BironbarAshpazkhane" Type="bit" />
+          <Property Name="DakhelSalonMoshtari" Type="bit" />
+          <Property Name="DakhelSalonSandogh" Type="bit" />
+          <Property Name="DakhelSalonAshpazkhane" Type="bit" />
+          <Property Name="Salondar" Type="bit" />
+          <Property Name="PeykMoshtari" Type="bit" />
+          <Property Name="PeykSandogh" Type="bit" />
+          <Property Name="PeykAshpazkhane" Type="bit" />
+          <Property Name="PeykPeyk" Type="bit" />
+          <Property Name="RePrintEdit" Type="bit" />
+          <Property Name="StatusSefareshDefault" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sandogh5Cm" Type="bit" />
+          <Property Name="Costumer5Cm" Type="bit" />
+          <Property Name="Kitchen5Cm" Type="bit" />
+          <Property Name="Peyk5Cm" Type="bit" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK_SaleFoodOnlineDetaile_SaleFoodOnline" />-->
@@ -63,6 +107,8 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
           <EntitySet Name="SaleFoodOnline" EntityType="Self.SaleFoodOnline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleFoodOnlineDetaile" EntityType="Self.SaleFoodOnlineDetaile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SettingServerOnline" EntityType="Self.SettingServerOnline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrinterUserSetting" EntityType="Self.tblPrinterUserSetting" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -111,6 +157,8 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
           <EntitySet Name="SaleFoodOnline" EntityType="Self.SaleFoodOnline" />
           <EntitySet Name="SaleFoodOnlineDetaile" EntityType="Self.SaleFoodOnlineDetaile" />
           <EntitySet Name="SettingServerOnline" EntityType="SanResturantModel.SettingServerOnline" />
+          <EntitySet Name="tblLogin" EntityType="SanResturantModel.tblLogin" />
+          <EntitySet Name="tblPrinterUserSetting" EntityType="SanResturantModel.tblPrinterUserSetting" />
         </EntityContainer>
         <EntityType Name="SettingServerOnline">
           <Key>
@@ -123,6 +171,50 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Motto" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Enable" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Login_RoleID" Type="Int32" />
+          <Property Name="Login_Active" Type="Boolean" />
+          <Property Name="Login_SetUser" Type="Boolean" />
+          <Property Name="Login_Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login_IsAdmin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblPrinterUserSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="PrinterCustomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrinterSandogh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrinterAshpazkhane" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrinterPeyk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BironbarMoshtari" Type="Boolean" />
+          <Property Name="BironbarSandogh" Type="Boolean" />
+          <Property Name="BironbarAshpazkhane" Type="Boolean" />
+          <Property Name="DakhelSalonMoshtari" Type="Boolean" />
+          <Property Name="DakhelSalonSandogh" Type="Boolean" />
+          <Property Name="DakhelSalonAshpazkhane" Type="Boolean" />
+          <Property Name="Salondar" Type="Boolean" />
+          <Property Name="PeykMoshtari" Type="Boolean" />
+          <Property Name="PeykSandogh" Type="Boolean" />
+          <Property Name="PeykAshpazkhane" Type="Boolean" />
+          <Property Name="PeykPeyk" Type="Boolean" />
+          <Property Name="RePrintEdit" Type="Boolean" />
+          <Property Name="StatusSefareshDefault" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sandogh5Cm" Type="Boolean" />
+          <Property Name="Costumer5Cm" Type="Boolean" />
+          <Property Name="Kitchen5Cm" Type="Boolean" />
+          <Property Name="Peyk5Cm" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -180,6 +272,52 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
                 <ScalarProperty Name="Tell" ColumnName="Tell" />
                 <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogin">
+            <EntityTypeMapping TypeName="SanResturantModel.tblLogin">
+              <MappingFragment StoreEntitySet="tblLogin">
+                <ScalarProperty Name="Login_IsAdmin" ColumnName="Login_IsAdmin" />
+                <ScalarProperty Name="Login_Mail" ColumnName="Login_Mail" />
+                <ScalarProperty Name="Login_SetUser" ColumnName="Login_SetUser" />
+                <ScalarProperty Name="Login_Active" ColumnName="Login_Active" />
+                <ScalarProperty Name="Login_RoleID" ColumnName="Login_RoleID" />
+                <ScalarProperty Name="Login_Pic" ColumnName="Login_Pic" />
+                <ScalarProperty Name="Login_Mobile" ColumnName="Login_Mobile" />
+                <ScalarProperty Name="Login_Name" ColumnName="Login_Name" />
+                <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
+                <ScalarProperty Name="Login_UserName" ColumnName="Login_UserName" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrinterUserSetting">
+            <EntityTypeMapping TypeName="SanResturantModel.tblPrinterUserSetting">
+              <MappingFragment StoreEntitySet="tblPrinterUserSetting">
+                <ScalarProperty Name="Peyk5Cm" ColumnName="Peyk5Cm" />
+                <ScalarProperty Name="Kitchen5Cm" ColumnName="Kitchen5Cm" />
+                <ScalarProperty Name="Costumer5Cm" ColumnName="Costumer5Cm" />
+                <ScalarProperty Name="Sandogh5Cm" ColumnName="Sandogh5Cm" />
+                <ScalarProperty Name="StatusSefareshDefault" ColumnName="StatusSefareshDefault" />
+                <ScalarProperty Name="RePrintEdit" ColumnName="RePrintEdit" />
+                <ScalarProperty Name="PeykPeyk" ColumnName="PeykPeyk" />
+                <ScalarProperty Name="PeykAshpazkhane" ColumnName="PeykAshpazkhane" />
+                <ScalarProperty Name="PeykSandogh" ColumnName="PeykSandogh" />
+                <ScalarProperty Name="PeykMoshtari" ColumnName="PeykMoshtari" />
+                <ScalarProperty Name="Salondar" ColumnName="Salondar" />
+                <ScalarProperty Name="DakhelSalonAshpazkhane" ColumnName="DakhelSalonAshpazkhane" />
+                <ScalarProperty Name="DakhelSalonSandogh" ColumnName="DakhelSalonSandogh" />
+                <ScalarProperty Name="DakhelSalonMoshtari" ColumnName="DakhelSalonMoshtari" />
+                <ScalarProperty Name="BironbarAshpazkhane" ColumnName="BironbarAshpazkhane" />
+                <ScalarProperty Name="BironbarSandogh" ColumnName="BironbarSandogh" />
+                <ScalarProperty Name="BironbarMoshtari" ColumnName="BironbarMoshtari" />
+                <ScalarProperty Name="PrinterPeyk" ColumnName="PrinterPeyk" />
+                <ScalarProperty Name="PrinterAshpazkhane" ColumnName="PrinterAshpazkhane" />
+                <ScalarProperty Name="PrinterSandogh" ColumnName="PrinterSandogh" />
+                <ScalarProperty Name="PrinterCustomer" ColumnName="PrinterCustomer" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

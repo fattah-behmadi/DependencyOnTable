@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +33,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>smurf_38Z_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -69,7 +75,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.configuration" />
+    <Reference Include="System.configuration">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
@@ -149,6 +157,12 @@
     <Compile Include="Rerport\RptCustomer.Designer.cs">
       <DependentUpon>RptCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rerport\RptCancel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rerport\RptCancel.Designer.cs">
+      <DependentUpon>RptCancel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rerport\RptKitchen.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -174,12 +188,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Rerport\frmPrview.resx">
       <DependentUpon>frmPrview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rerport\RptCustomer.resx">
       <DependentUpon>RptCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rerport\RptCancel.resx">
+      <DependentUpon>RptCancel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rerport\RptKitchen.resx">
       <DependentUpon>RptKitchen.cs</DependentUpon>
@@ -199,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="smurf_38Z_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModeData\ModeData.csproj">
